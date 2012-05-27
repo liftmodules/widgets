@@ -21,16 +21,18 @@ libraryDependencies <++= liftVersion { v =>
 libraryDependencies <++= scalaVersion { sv => 
   "ch.qos.logback" % "logback-classic" % "1.0.0" % "provided" ::
   "log4j" % "log4j" % "1.2.16" % "provided" ::
-  "org.scala-tools.testing" %% "specs" %  (sv match { 
-      case "2.8.0" => "1.6.5"
-      case "2.9.1" => "1.6.9"
-      case _ => "1.6.8"
-      }) % "test" :: 
-  "org.scalacheck" %% "scalacheck" % (sv match { 
-      case "2.8.0" => "1.7"
-      case "2.8.1" | "2.8.2" => "1.8"
-      case _ => "1.9"
-      }) % "test" ::
+  (sv match { 
+      case "2.8.0" => "org.scala-tools.testing" %% "specs" % "1.6.5" % "test"
+      case "2.9.1" => "org.scala-tools.testing" %% "specs" % "1.6.9" % "test"
+      case "2.9.2" => "org.scala-tools.testing" % "specs_2.9.1" % "1.6.9" % "test"
+      case _ =>  "org.scala-tools.testing" %% "specs" % "1.6.8" % "test"
+      })  :: 
+   (sv match { 
+      case "2.8.0" => "org.scalacheck" %% "scalacheck" % "1.7" % "test"
+      case "2.8.1" | "2.8.2" =>  "org.scalacheck" %% "scalacheck" % "1.8" % "test"
+      case "2.9.2"  => "org.scalacheck" % "scalacheck_2.9.1" % "1.9" % "test"
+      case _ => "org.scalacheck" %% "scalacheck" % "1.9" % "test"
+      })  ::
   Nil
 }
 
