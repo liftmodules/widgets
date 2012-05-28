@@ -30,7 +30,7 @@ import _root_.net.liftweb.http.js._
 import _root_.java.util.{Calendar, Locale}
 import _root_.java.util.Calendar._
 
-import _root_.net.liftweb.widgets.calendars.{CalendarDayView, DayViewMeta, CalendarItem, CalendarType}
+import _root_.net.liftmodules.widgets.calendars.{CalendarDayView, DayViewMeta, CalendarItem, CalendarType}
 
 class CalendarDayViewDemo {
 

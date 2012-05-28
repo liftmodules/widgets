@@ -14,21 +14,14 @@
  * limitations under the License.
  */
 
-package webapptest {
-package snippet {
+package net.liftmodules {
+package widgets {
+package flot {
 
-import _root_.scala.xml.NodeSeq
-import _root_.net.liftmodules.widgets.rssfeed.RSSFeed
+case class FlotInfo (idPlaceholder: String, series: List[FlotSerie], options: FlotOptions)
 
-class RSSFeedDemo {
-  def render(xhtml: NodeSeq) :NodeSeq = {
-    val widget = new RSSFeed()
+case class FlotNewData (series: List [FlotSerie], datas: List[(Double, Double)])
 
-    <xml:group>
-      {widget.render("http://www.praytothemachine.com/evil/index.php/feed/")}
-    </xml:group>
-  }
 }
-
 }
 }

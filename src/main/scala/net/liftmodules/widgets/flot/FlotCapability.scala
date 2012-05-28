@@ -14,21 +14,24 @@
  * limitations under the License.
  */
 
-package webapptest {
-package snippet {
+package net.liftmodules {
+package widgets {
+package flot {
 
-import _root_.scala.xml.NodeSeq
-import _root_.net.liftmodules.widgets.rssfeed.RSSFeed
+import scala.xml.{NodeSeq, Node, PCData, Text}
 
-class RSSFeedDemo {
-  def render(xhtml: NodeSeq) :NodeSeq = {
-    val widget = new RSSFeed()
+import _root_.net.liftweb.http.js.JsCmd
 
-    <xml:group>
-      {widget.render("http://www.praytothemachine.com/evil/index.php/feed/")}
-    </xml:group>
-  }
+/**
+ * Used to generate extra capability like an overview
+ */
+
+trait FlotCapability {
+  def render (flotInfo: FlotInfo): JsCmd
+  def renderHide(): JsCmd
+  def renderShow(): JsCmd
 }
 
+}
 }
 }

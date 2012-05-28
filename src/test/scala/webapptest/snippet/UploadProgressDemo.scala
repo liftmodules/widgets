@@ -24,7 +24,7 @@ import _root_.net.liftweb.util._
 import _root_.net.liftweb.util.Helpers._
 import _root_.net.liftweb.http.js._
 import _root_.net.liftweb.http.js.JsCmds._
-import _root_.net.liftweb.widgets.uploadprogress.UploadProgress
+import _root_.net.liftmodules.widgets.uploadprogress.UploadProgress
 
 /**
  * This is a pure example class - nothing more.

@@ -22,13 +22,15 @@ import _root_.net.liftweb.http._
 import _root_.net.liftweb.sitemap._
 import _root_.net.liftweb.sitemap.Loc._
 import Helpers._
-import _root_.net.liftweb.widgets.calendars._
-import _root_.net.liftweb.widgets.autocomplete._
-import _root_.net.liftweb.widgets.tree.TreeView
-import _root_.net.liftweb.widgets.menu.MenuWidget
-import _root_.net.liftweb.widgets.sparklines.Sparklines
-import _root_.net.liftweb.widgets.tablesorter.TableSorter
-import _root_.net.liftweb.widgets.uploadprogress.UploadProgress
+
+import _root_.net.liftmodules._
+import widgets.calendars._
+import widgets.autocomplete._
+import widgets.tree.TreeView
+import widgets.menu.MenuWidget
+import widgets.sparklines.Sparklines
+import widgets.tablesorter.TableSorter
+import widgets.uploadprogress.UploadProgress
 
 import _root_.webapptest.snippet.UploadProgressDemo
 

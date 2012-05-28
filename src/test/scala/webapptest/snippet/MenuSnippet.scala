@@ -18,7 +18,7 @@ package webapptest {
 package snippet {
 
 import _root_.scala.xml.NodeSeq
-import _root_.net.liftweb.widgets.menu._
+import _root_.net.liftmodules.widgets.menu._
 
 class MenuSnippet {
 

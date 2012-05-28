@@ -14,21 +14,28 @@
  * limitations under the License.
  */
 
-package webapptest {
-package snippet {
+package net.liftmodules {
+package widgets {
+package flot {
 
-import _root_.scala.xml.NodeSeq
-import _root_.net.liftmodules.widgets.rssfeed.RSSFeed
+import _root_.net.liftweb.util._
+import _root_.net.liftweb.common._
 
-class RSSFeedDemo {
-  def render(xhtml: NodeSeq) :NodeSeq = {
-    val widget = new RSSFeed()
+/**
+ * Serie of data
+ */
 
-    <xml:group>
-      {widget.render("http://www.praytothemachine.com/evil/index.php/feed/")}
-    </xml:group>
-  }
+trait FlotSerie
+{
+  def data: List[(Double, Double)] = Nil
+  def label: Box[String] = Empty
+  def lines: Box[FlotLinesOptions] = Empty
+  def points: Box[FlotPointsOptions] = Empty
+  def bars: Box[FlotBarsOptions] = Empty
+  def color: Box[Either[String, Int]] = Empty
+  def shadowSize: Box[Int] = Empty
 }
 
+}
 }
 }

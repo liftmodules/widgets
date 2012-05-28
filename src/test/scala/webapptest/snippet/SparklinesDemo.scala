@@ -30,7 +30,7 @@ import _root_.net.liftweb.http.js._
 import JE._
 import JsCmds._
 
-import _root_.net.liftweb.widgets.sparklines.{Sparklines, SparklineStyle}
+import _root_.net.liftmodules.widgets.sparklines.{Sparklines, SparklineStyle}
 
 class SparklinesDemo {
 

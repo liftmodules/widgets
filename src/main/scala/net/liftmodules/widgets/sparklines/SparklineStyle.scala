@@ -14,21 +14,16 @@
  * limitations under the License.
  */
 
-package webapptest {
-package snippet {
+package net.liftmodules {
+package widgets {
+package sparklines {
 
-import _root_.scala.xml.NodeSeq
-import _root_.net.liftmodules.widgets.rssfeed.RSSFeed
+object SparklineStyle extends Enumeration(0, "Sparkline",
+                                             "BarSparkline") {
+  val LINE, BAR = Value
 
-class RSSFeedDemo {
-  def render(xhtml: NodeSeq) :NodeSeq = {
-    val widget = new RSSFeed()
-
-    <xml:group>
-      {widget.render("http://www.praytothemachine.com/evil/index.php/feed/")}
-    </xml:group>
-  }
 }
 
+}
 }
 }

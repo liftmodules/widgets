@@ -15,6 +15,8 @@ Provides:
 * tree
 * uploadprogress
 
+**Note:** The module package changed from `net.liftweb.widgets` to `net.liftmodules.widgets` in May 2012.  Please consider this when referencing documentation written before that date.
+
 ---
 
 Quick start for users

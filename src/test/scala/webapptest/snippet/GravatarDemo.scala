@@ -18,7 +18,7 @@ package webapptest {
 package snippet {
 
 import _root_.scala.xml.NodeSeq
-import _root_.net.liftweb.widgets.gravatar.Gravatar
+import _root_.net.liftmodules.widgets.gravatar.Gravatar
 
 class GravatarDemo {
 
