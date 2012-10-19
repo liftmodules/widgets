@@ -59,7 +59,7 @@ trait BootstrapDialog extends JsCmd {
 
   protected def formContent = body
 
-  def cssClass: String = "modal fade " + clsOption
+  def cssClass: String = "modal " + clsOption
 
   def toJsObj(map: Map[String, JsExp]): JsObj = {
     map.foldLeft(JsObj())((jsobj, value) => jsobj +* JsObj(value))
