@@ -24,6 +24,7 @@ import net.liftweb.util.Helpers._
 import net.liftweb.http.SHtml
 import net.liftmodules.widgets.bootstrap.ConfirmRemoveDialog
 import net.liftweb.http.js.JsCmds.Alert
+import net.liftweb.common.Empty
 
 /**
  * @author tuhlmann@agynamix.de
@@ -34,7 +35,7 @@ import net.liftweb.http.js.JsCmds.Alert
 class BootstrapDialogDemo {
 
   def render = {
-    "#modal_dialog [onclick]" #> SHtml.ajaxInvoke(()=>Modal(<div>Some Template Here</div>, "keyboard" -> false, "class" -> "max"))
+    "#modal_dialog [onclick]" #> SHtml.ajaxInvoke(()=> Modal(<div>Some Template Here</div>, "keyboard" -> false, "class" -> "max"))
 
     "#modal_remove [onclick]" #> SHtml.ajaxInvoke(()=>{
       ConfirmRemoveDialog("Delete Item", "Really delete this item?",

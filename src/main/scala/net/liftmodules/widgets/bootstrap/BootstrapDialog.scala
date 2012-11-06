@@ -40,9 +40,10 @@ trait BootstrapDialog extends JsCmd {
     "backdrop" -> "static"
   )
 
+  val onClose: Box[()=>JsCmd] = Empty
   val options: Seq[(String, JsExp)] = List()
 
-  def allOptions = defaultOptions ++ options.toMap
+  def allOptions = defaultOptions.filterNot(dopt => options.exists(o => dopt._1 == o._1)) ++ options.toMap
 
   def clsOption: String = option("class")
 
@@ -65,15 +66,16 @@ trait BootstrapDialog extends JsCmd {
     map.foldLeft(JsObj())((jsobj, value) => jsobj +* JsObj(value))
   }
 
+  def buildOnClose(): String = onClose.map(f => ajaxInvoke(f)._2.toJsCmd) openOr ""
+
   def open: JsCmd = open(formContent)
   def open(content: NodeSeq): JsCmd = {
     val htmlAndJs = HtmlJsSeparator(content)
     val js: JsCmd = (Jq("<div id='%s' class='%s' tabindex='-1' style='display:none'></div>".format(dialogId, cssClass)) ~>
       JsFunc("appendTo", "body") ~> htmlAndJs._1) &
       (JqId(dialogId) ~> JsFunc("modal", toJsObj(allOptions))) & htmlAndJs._2 &
-      Run("$('#%s').on('hidden', function () { $('#%s').remove(); })".format(dialogId, dialogId))
+      Run("$('#%s').on('hidden', function () { $('#%s').remove(); %s })".format(dialogId, dialogId, buildOnClose))
     //println("JS: "+js.toJsCmd)
-    //println("FIXXED: "+htmlAndJs._2.toJsCmd)
     js
   }
   lazy val toJsCmd = open.toJsCmd
@@ -154,10 +156,14 @@ trait DialogHelpers extends BootstrapDialog {
  *
  */
 object Modal {
-  def apply(body: NodeSeq, options: (String, JsExp)*) = new Modal(body, options: _*)
+  def apply(body: NodeSeq, options: (String, JsExp)*) = new Modal(body, Empty, options: _*)
 }
 
-class Modal(override val body: NodeSeq, override val options: (String, JsExp)*) extends BootstrapDialog
+object Modal2 {
+  def apply(body: NodeSeq, onClose: ()=>JsCmd, options: (String, JsExp)*) = new Modal(body, Full(onClose), options: _*)
+}
+
+class Modal(override val body: NodeSeq, override val onClose: Box[()=>JsCmd], override val options: (String, JsExp)*) extends BootstrapDialog
 
 class InfoDialog(title: String, override val body: NodeSeq) extends StructuredBootstrapDialog {
   override val header = Full(<h3>{title}</h3>)

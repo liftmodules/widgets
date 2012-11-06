@@ -5,7 +5,7 @@ liftVersion <<= liftVersion ?? "2.5-SNAPSHOT"
 version <<= liftVersion apply { _ + "-1.1-SNAPSHOT" }
 
 organization := "net.liftmodules"
- 
+
 scalaVersion := "2.9.2"
 
 crossScalaVersions := Seq("2.9.2", "2.9.1-1", "2.9.1")
@@ -19,16 +19,16 @@ resolvers += "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"
 libraryDependencies <++= liftVersion { v =>
   "net.liftweb" %% "lift-webkit" % v % "compile->default" ::
   Nil
-}    
+}
 
-libraryDependencies <++= scalaVersion { sv => 
+libraryDependencies <++= scalaVersion { sv =>
   "ch.qos.logback" % "logback-classic" % "1.0.0" % "provided" ::
   "log4j" % "log4j" % "1.2.16" % "provided" ::
-  (sv match { 
+  (sv match {
       case "2.9.2" | "2.9.1" | "2.9.1-1" => "org.scala-tools.testing" % "specs_2.9.1" % "1.6.9" % "test"
       case _ =>  "org.scala-tools.testing" %% "specs" % "1.6.8" % "test"
-      })  :: 
-   (sv match { 
+      })  ::
+   (sv match {
       case "2.9.2"  => "org.scalacheck" % "scalacheck_2.9.1" % "1.9" % "test"
       case _ => "org.scalacheck" %% "scalacheck" % "1.9" % "test"
       })  ::
@@ -39,7 +39,7 @@ publishTo <<= version { _.endsWith("SNAPSHOT") match {
  	case true  => Some("snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")
  	case false => Some("releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
   }
- } 
+ }
 
 
 // For local deployment:
@@ -76,6 +76,6 @@ pomExtra := (
 	      <name>Lift Team</name>
 	      <url>http://www.liftmodules.net</url>
 	 	</developer>
-	 </developers> 
+	 </developers>
  )
-  
+
