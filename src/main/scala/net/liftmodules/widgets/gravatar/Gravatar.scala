@@ -76,7 +76,7 @@ object Gravatar extends Loggable {
     } catch {
       case a: NoSuchAlgorithmException => logger.error("[Gravater] No Algorithm.", a); ""
       case x: UnsupportedEncodingException => logger.warn("[Gravater] Unsupported Encoding.", x); ""
-      case _ => logger.warn("[Gravater] Unknown error."); ""
+      case _: Throwable => logger.warn("[Gravater] Unknown error."); ""
     }
   }
 }

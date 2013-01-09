@@ -2,13 +2,13 @@ name := "widgets"
 
 liftVersion <<= liftVersion ?? "2.5-SNAPSHOT"
 
-version <<= liftVersion apply { _ + "-1.1-SNAPSHOT" }
+version <<= liftVersion apply { _ + "-1.2-SNAPSHOT" }
 
 organization := "net.liftmodules"
 
-scalaVersion := "2.9.2"
+scalaVersion := "2.10.0"
 
-crossScalaVersions := Seq("2.9.2", "2.9.1-1", "2.9.1")
+crossScalaVersions := Seq("2.10.0", "2.9.2", "2.9.1-1", "2.9.1")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 
@@ -25,11 +25,11 @@ libraryDependencies <++= scalaVersion { sv =>
   "ch.qos.logback" % "logback-classic" % "1.0.0" % "provided" ::
   "log4j" % "log4j" % "1.2.16" % "provided" ::
   (sv match {
-      case "2.9.2" | "2.9.1" | "2.9.1-1" => "org.scala-tools.testing" % "specs_2.9.1" % "1.6.9" % "test"
+      case "2.10.0" | "2.9.2" | "2.9.1" | "2.9.1-1" => "org.scala-tools.testing" % "specs_2.9.1" % "1.6.9" % "test"
       case _ =>  "org.scala-tools.testing" %% "specs" % "1.6.8" % "test"
       })  ::
    (sv match {
-      case "2.9.2"  => "org.scalacheck" % "scalacheck_2.9.1" % "1.9" % "test"
+      case "2.10.0" | "2.9.2"  => "org.scalacheck" % "scalacheck_2.9.1" % "1.9" % "test"
       case _ => "org.scalacheck" %% "scalacheck" % "1.9" % "test"
       })  ::
   Nil

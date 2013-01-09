@@ -50,7 +50,7 @@ object Sparklines {
     <head>
        <script type="text/javascript" src={"/" + LiftRules.resourceServerPath + "/sparklines/sparklines.min.js"}/>
     {
-      Script(OnLoad(toJsExp(id, graphStyle, data, opts)))
+      Script(OnLoad(toJsExp(id, graphStyle, data, opts).cmd))
     }
     </head>
   }

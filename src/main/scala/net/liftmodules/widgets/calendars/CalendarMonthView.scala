@@ -170,7 +170,7 @@ class CalendarMonthView(val when: Calendar, val meta: MonthViewMeta) {
             Group(<div>{day}</div> %
               ("class" -> head) ::
               div % ("class" -> cell) :: Nil)
-          }</td> % ("date" -> (dateFormatter format(cal getTime))) 
+          }</td> % ("date" -> (dateFormatter format(cal getTime)))
         } finally {
           cal add(DAY_OF_MONTH, 1)
         }
@@ -205,18 +205,18 @@ class CalendarMonthView(val when: Calendar, val meta: MonthViewMeta) {
         JsCrVar("dayClick", dayClick openOr JsRaw("function(param){}")) &
         JsCrVar("weekClick", weekClick openOr JsRaw("function(param){}")) &
         JsCrVar("calendars", CalendarUtils.toJSON(calendars.toList)) &
-        JsRaw("""
+        Run("""
          jQuery(document).ready(function() {
             CalendarMonthView.buildMonthViewCalendars();
-            
+
             jQuery('.day').bind('click',function(event){
               dayClick(this,jQuery(this).attr('date'));
             });
-            
+
             jQuery('.cellWeek').bind('click',function(){
               weekClick(this, jQuery(this).attr('wk'));
             });
-            
+
           })
          """)))}
       </head>

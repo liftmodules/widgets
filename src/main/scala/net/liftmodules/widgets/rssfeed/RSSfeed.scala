@@ -20,9 +20,8 @@ package rssfeed {
 
 import _root_.scala.xml._
 import _root_.java.net.{URLConnection, URL}
-import _root_.scala.collection.mutable._
-// import net.liftweb.util.IoHelpers._
 import net.liftweb.util.Helpers._
+import scala.collection.mutable.Queue
 
 object RSSFeed {
   /**

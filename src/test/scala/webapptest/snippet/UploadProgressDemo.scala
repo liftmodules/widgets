@@ -32,14 +32,14 @@ import _root_.net.liftmodules.widgets.uploadprogress.UploadProgress
  * in your own applications.
  */
 object UploadProgressDemo extends DispatchSnippet {
-  
+
   private object theUpload extends RequestVar[Box[FileParamHolder]](Empty)
-  
-  def dispatch = { 
-    case "upload" => upload _ 
+
+  def dispatch = {
+    case "upload" => upload _
     case "script" => UploadProgress.head _
   }
-  
+
   def upload(xhtml: NodeSeq): NodeSeq = {
     if (S.get_?){
       bind("ul", chooseTemplate("choose", "get", xhtml),
@@ -47,11 +47,11 @@ object UploadProgressDemo extends DispatchSnippet {
     } else {
       bind("ul", chooseTemplate("choose", "post", xhtml),
            "file_name" -> theUpload.is.map(v => Text(v.fileName)),
-           "mime_type" -> theUpload.is.map(v => Box.legacyNullTest(v.mimeType).map(Text).openOr(Text("No mime type supplied"))),
+           "mime_type" -> theUpload.is.map(v => Box.legacyNullTest(v.mimeType).map(s => Text(s)).openOr(Text("No mime type supplied"))),
            "length" -> theUpload.is.map(v => Text(v.file.length.toString)),
            "md5" -> theUpload.is.map(v => Text(hexEncode(md5(v.file))))
       )
-    }  
+    }
   }
 }
 

@@ -170,8 +170,8 @@ object Flot {
    */
   def renderOneValue (one: (Double, Double)) : JsExp =
   one match {
-    case (Math.NaN_DOUBLE, _) => JsNull
-    case (_, Math.NaN_DOUBLE) => JsNull
+    case (Double.NaN, _) => JsNull
+    case (_, Double.NaN) => JsNull
     case (a, b) => JsArray(a, b)
   }
 
