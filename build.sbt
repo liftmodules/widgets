@@ -25,12 +25,12 @@ libraryDependencies <++= scalaVersion { sv =>
   "ch.qos.logback" % "logback-classic" % "1.0.0" % "provided" ::
   "log4j" % "log4j" % "1.2.16" % "provided" ::
   (sv match {
-      case "2.10.0" | "2.9.2" | "2.9.1" | "2.9.1-1" => "org.scala-tools.testing" % "specs_2.9.1" % "1.6.9" % "test"
-      case _ =>  "org.scala-tools.testing" %% "specs" % "1.6.8" % "test"
+      case "2.10.0" | "2.9.2" | "2.9.1" | "2.9.1-1" => "org.specs2" %% "specs2" % "1.12.3" % "test"
+      case _ =>  "org.specs2" %% "specs2" % "1.12.3" % "test"
       })  ::
    (sv match {
-      case "2.10.0" | "2.9.2"  => "org.scalacheck" % "scalacheck_2.9.1" % "1.9" % "test"
-      case _ => "org.scalacheck" %% "scalacheck" % "1.9" % "test"
+      case "2.10.0" | "2.9.2"  => "org.scalacheck" %% "scalacheck" % "1.10.0" % "test"
+      case _ => "org.scalacheck" %% "scalacheck" % "1.10.0" % "test"
       })  ::
   Nil
 }
