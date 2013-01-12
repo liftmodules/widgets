@@ -1,8 +1,8 @@
 name := "widgets"
 
-liftVersion <<= liftVersion ?? "2.5-SNAPSHOT"
+liftVersion <<= liftVersion ?? "2.5-M4"
 
-version <<= liftVersion apply { _ + "-1.2-SNAPSHOT" }
+version <<= liftVersion apply { _ + "-1.2" }
 
 organization := "net.liftmodules"
 
