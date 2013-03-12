@@ -7,6 +7,8 @@ val liftVersion = SettingKey[String]("liftVersion", "Version number of the Lift 
 
 val project = Project("LiftModule", file("."))
 
+// addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.1.2")
+
 }
 
 
