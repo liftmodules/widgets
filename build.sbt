@@ -1,10 +1,14 @@
 name := "widgets"
 
-liftVersion <<= liftVersion ?? "2.5-RC2"
-
-version <<= liftVersion apply { _ + "-1.3-SNAPSHOT" }
-
 organization := "net.liftmodules"
+
+version := "1.3-SNAPSHOT"
+
+liftVersion <<= liftVersion ?? "2.5-SNAPSHOT"
+
+liftEdition <<= liftVersion apply { _.substring(0,3) }
+
+name <<= (name, liftEdition) { (n, e) =>  n + "_" + e }
 
 scalaVersion := "2.10.0"
 
@@ -17,7 +21,7 @@ resolvers += "CB Central Mirror" at "http://repo.cloudbees.com/content/groups/pu
 resolvers += "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"
 
 libraryDependencies <++= liftVersion { v =>
-  "net.liftweb" %% "lift-webkit" % v % "compile->default" ::
+  "net.liftweb" %% "lift-webkit" % v % "provided" ::
   Nil
 }
 
