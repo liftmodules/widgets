@@ -27,10 +27,12 @@ To include this module in your Lift project, update your `libraryDependencies` i
     "net.liftmodules" %% "widgets_3.0" % "1.3-SNAPSHOT"
 
 
-Widget details
-==============
+Widget documentation
+====================
 
-Widget documentation can be found [on the Lift wiki](https://www.assembla.com/spaces/liftweb/wiki/Widgets).
+* _Exploring Lift_, chapter 14: [Lift Widgets](http://exploring.liftweb.net/master/index-14.html)
+
+* [Lift wiki page for widgets](https://www.assembla.com/spaces/liftweb/wiki/Widgets).
 
 **Note:** The module package changed from `net.liftweb.widgets` to `net.liftmodules.widgets` in May 2012.  Please consider this when referencing documentation written before that date.
 
