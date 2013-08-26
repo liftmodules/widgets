@@ -2,9 +2,9 @@ name := "widgets"
 
 organization := "net.liftmodules"
 
-version := "1.3-SNAPSHOT"
+version := "1.4-SNAPSHOT"
 
-liftVersion <<= liftVersion ?? "2.5-SNAPSHOT"
+liftVersion <<= liftVersion ?? "2.6-SNAPSHOT"
 
 liftEdition <<= liftVersion apply { _.substring(0,3) }
 
