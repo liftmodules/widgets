@@ -98,6 +98,9 @@ trait StructuredBootstrapDialog extends BootstrapDialog {
 
   protected def onCloseFunc(): Box[()=>JsCmd] = Empty
 
+}
+
+trait Bootstrap2DlgTpl extends BootstrapDialog with StructuredBootstrapDialog {
 
   override protected def formContent = {
     <xml:group>
@@ -122,6 +125,34 @@ trait StructuredBootstrapDialog extends BootstrapDialog {
     </xml:group>
   }
 
+}
+
+trait Bootstrap3DlgTpl extends BootstrapDialog with StructuredBootstrapDialog {
+
+  override protected def formContent = {
+    <div class="modal-dialog">
+      <div class="modal-content">
+        {header match {
+          case Full(headSeq) =>
+            <div class="modal-header">
+              {closeX}
+              {headSeq}
+            </div>
+          case _ => NodeSeq.Empty
+        }}
+        <div class="modal-body">
+          {body}
+        </div>
+        {footer match {
+          case Full(footSeq) =>
+            <div class="modal-footer">
+              {footSeq}
+            </div>
+          case _ => NodeSeq.Empty
+        }}
+      </div>
+    </div>
+  }
 
 }
 
@@ -165,7 +196,12 @@ object Modal2 {
 
 class Modal(override val body: NodeSeq, override val onClose: Box[()=>JsCmd], override val options: (String, JsExp)*) extends BootstrapDialog
 
-class InfoDialog(title: String, override val body: NodeSeq) extends StructuredBootstrapDialog {
+class InfoDialog(title: String, override val body: NodeSeq) extends StructuredBootstrapDialog with Bootstrap2DlgTpl {
+  override val header = Full(<h3>{title}</h3>)
+  override val footer = Full(<button class="btn" aria-hidden="true" data-dismiss="modal">Close</button>)
+}
+
+class Bs3InfoDialog(title: String, override val body: NodeSeq) extends StructuredBootstrapDialog with Bootstrap3DlgTpl {
   override val header = Full(<h3>{title}</h3>)
   override val footer = Full(<button class="btn" aria-hidden="true" data-dismiss="modal">Close</button>)
 }
@@ -178,7 +214,22 @@ object ConfirmDialog {
     new ConfirmDialog(Full(<h3>{title}</h3>), body, "Ok", Full(okFunc), "Cancel", Full(cancelFunc), options: _*)
 }
 
-class ConfirmDialog(override val header: Box[NodeSeq], override val body: NodeSeq, okTitle: String, okFunc: Box[()=>JsCmd], cancelTitle: String, cancelFunc: Box[()=>JsCmd], override val options: (String, JsExp)*) extends StructuredBootstrapDialog with DialogHelpers {
+class ConfirmDialog(override val header: Box[NodeSeq], override val body: NodeSeq, okTitle: String, okFunc: Box[()=>JsCmd], cancelTitle: String, cancelFunc: Box[()=>JsCmd], override val options: (String, JsExp)*)
+      extends StructuredBootstrapDialog with Bootstrap2DlgTpl with DialogHelpers {
+  override val footer = Full(genFooter(okTitle, okFunc, cancelTitle, cancelFunc))
+  override protected def onCloseFunc(): Box[()=>JsCmd] = cancelFunc
+}
+
+object Bs3ConfirmDialog {
+  def apply(title: String, body: NodeSeq, okFunc: ()=>JsCmd, options: (String, JsExp)*) =
+    new Bs3ConfirmDialog(Full(<h3>{title}</h3>), body, "Ok", Full(okFunc), "Cancel", Empty, options: _*)
+
+  def apply(title: String, body: NodeSeq, okFunc: ()=>JsCmd, cancelFunc: ()=>JsCmd, options: (String, JsExp)*) =
+    new Bs3ConfirmDialog(Full(<h3>{title}</h3>), body, "Ok", Full(okFunc), "Cancel", Full(cancelFunc), options: _*)
+}
+
+class Bs3ConfirmDialog(override val header: Box[NodeSeq], override val body: NodeSeq, okTitle: String, okFunc: Box[()=>JsCmd], cancelTitle: String, cancelFunc: Box[()=>JsCmd], override val options: (String, JsExp)*)
+      extends StructuredBootstrapDialog with Bootstrap3DlgTpl with DialogHelpers {
   override val footer = Full(genFooter(okTitle, okFunc, cancelTitle, cancelFunc))
   override protected def onCloseFunc(): Box[()=>JsCmd] = cancelFunc
 }
@@ -187,6 +238,15 @@ object ConfirmRemoveDialog {
   def apply(title: String, msg: String, removeFunc: ()=>JsCmd, options: (String, JsExp)*) = {
     val options2: Seq[(String, JsExp)] = List(("okClass" -> "btn-danger"))
     new ConfirmDialog(Full(<h3>{title}</h3>), NodeSeq.Empty, "Remove", Full(removeFunc), "Cancel", Empty, (options2 ++ options): _*) {
+      override val body = <p class="lead">{msg}</p>
+    }
+  }
+}
+
+object Bs3ConfirmRemoveDialog {
+  def apply(title: String, msg: String, removeFunc: ()=>JsCmd, options: (String, JsExp)*) = {
+    val options2: Seq[(String, JsExp)] = List(("okClass" -> "btn-danger"))
+    new Bs3ConfirmDialog(Full(<h3>{title}</h3>), NodeSeq.Empty, "Remove", Full(removeFunc), "Cancel", Empty, (options2 ++ options): _*) {
       override val body = <p class="lead">{msg}</p>
     }
   }
