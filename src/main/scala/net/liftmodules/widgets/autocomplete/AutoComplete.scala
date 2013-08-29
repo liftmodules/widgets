@@ -190,8 +190,6 @@ class AutoComplete {
       val json = jqOptions.map(t => t._1 + ":" + t._2).mkString("{", ",", "}")
       val autocompleteOptions = JsRaw(json)
 
-      //S.appendJs(JsCmd(<script type="text/javascript" src={"/" + LiftRules.resourceServerPath +"/autocomplete/jquery.autocomplete.js"} />))
-
       S.appendJs(JsRaw("""
       jQuery(document).ready(function(){
         var data = """+what.encJs+""";
