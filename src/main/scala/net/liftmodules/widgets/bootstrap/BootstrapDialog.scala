@@ -211,10 +211,10 @@ class Bs3InfoDialog(title: String, override val body: NodeSeq) extends Structure
 
 object ConfirmDialog {
   def apply(title: String, body: NodeSeq, okFunc: ()=>JsCmd, options: (String, JsExp)*) =
-    new ConfirmDialog(Full(<h3>{title}</h3>), body, S ? "liftmodule-widgets.ok", Full(okFunc), S ? "liftmodule-widgets.cancel", Empty, options: _*)
+    new ConfirmDialog(Full(<h3>{title}</h3>), body, S ? "liftmodule-widgets-ok", Full(okFunc), S ? "liftmodule-widgets-cancel", Empty, options: _*)
 
   def apply(title: String, body: NodeSeq, okFunc: ()=>JsCmd, cancelFunc: ()=>JsCmd, options: (String, JsExp)*) =
-    new ConfirmDialog(Full(<h3>{title}</h3>), body, S ? "liftmodule-widgets.ok", Full(okFunc), S ? "liftmodule-widgets.cancel", Full(cancelFunc), options: _*)
+    new ConfirmDialog(Full(<h3>{title}</h3>), body, S ? "liftmodule-widgets-ok", Full(okFunc), S ? "liftmodule-widgets-cancel", Full(cancelFunc), options: _*)
 }
 
 class ConfirmDialog(override val header: Box[NodeSeq], override val body: NodeSeq, okTitle: String, okFunc: Box[()=>JsCmd], cancelTitle: String, cancelFunc: Box[()=>JsCmd], override val options: (String, JsExp)*)
@@ -226,12 +226,12 @@ class ConfirmDialog(override val header: Box[NodeSeq], override val body: NodeSe
 object Bs3ConfirmDialog {
   def apply(title: String, body: NodeSeq, okFunc: ()=>JsCmd, options: (String, JsExp)*) = {
     val options2: Seq[(String, JsExp)] = List(("cancelClass" -> "btn-default"), ("okClass" -> "btn-default"))
-    new Bs3ConfirmDialog(Full(<h3>{title}</h3>), body, S ? "liftmodule-widgets.ok", Full(okFunc), S ? "liftmodule-widgets.cancel", Empty, (options2 ++ options): _*)
+    new Bs3ConfirmDialog(Full(<h3>{title}</h3>), body, S ? "liftmodule-widgets-ok", Full(okFunc), S ? "liftmodule-widgets-cancel", Empty, (options2 ++ options): _*)
   }
 
   def apply(title: String, body: NodeSeq, okFunc: ()=>JsCmd, cancelFunc: ()=>JsCmd, options: (String, JsExp)*) = {
     val options2: Seq[(String, JsExp)] = List(("cancelClass" -> "btn-default"), ("okClass" -> "btn-default"))
-    new Bs3ConfirmDialog(Full(<h3>{title}</h3>), body, S ? "liftmodule-widgets.ok", Full(okFunc), S ? "liftmodule-widgets.cancel", Full(cancelFunc), (options2 ++ options): _*)
+    new Bs3ConfirmDialog(Full(<h3>{title}</h3>), body, S ? "liftmodule-widgets-ok", Full(okFunc), S ? "liftmodule-widgets-cancel", Full(cancelFunc), (options2 ++ options): _*)
   }
 }
 
@@ -244,7 +244,7 @@ class Bs3ConfirmDialog(override val header: Box[NodeSeq], override val body: Nod
 object ConfirmRemoveDialog {
   def apply(title: String, msg: String, removeFunc: ()=>JsCmd, options: (String, JsExp)*) = {
     val options2: Seq[(String, JsExp)] = List(("okClass" -> "btn-danger"))
-    new ConfirmDialog(Full(<h3>{title}</h3>), NodeSeq.Empty, S ? "liftmodule-widgets.remove", Full(removeFunc), S ? "liftmodule-widgets.cancel", Empty, (options2 ++ options): _*) {
+    new ConfirmDialog(Full(<h3>{title}</h3>), NodeSeq.Empty, S ? "liftmodule-widgets-remove", Full(removeFunc), S ? "liftmodule-widgets-cancel", Empty, (options2 ++ options): _*) {
       override val body = <p class="lead">{msg}</p>
     }
   }
@@ -253,7 +253,7 @@ object ConfirmRemoveDialog {
 object Bs3ConfirmRemoveDialog {
   def apply(title: String, msg: String, removeFunc: ()=>JsCmd, options: (String, JsExp)*) = {
     val options2: Seq[(String, JsExp)] = List(("cancelClass" -> "btn-default"), ("okClass" -> "btn-danger"))
-    new Bs3ConfirmDialog(Full(<h3>{title}</h3>), NodeSeq.Empty, S ? "liftmodule-widgets.remove", Full(removeFunc), S ? "liftmodule-widgets.cancel", Empty, (options2 ++ options): _*) {
+    new Bs3ConfirmDialog(Full(<h3>{title}</h3>), NodeSeq.Empty, S ? "liftmodule-widgets-remove", Full(removeFunc), S ? "liftmodule-widgets-cancel", Empty, (options2 ++ options): _*) {
       override val body = <p class="lead">{msg}</p>
     }
   }
