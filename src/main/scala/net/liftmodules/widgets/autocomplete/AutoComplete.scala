@@ -189,25 +189,24 @@ class AutoComplete {
                        Nil ::: jsonOptions
       val json = jqOptions.map(t => t._1 + ":" + t._2).mkString("{", ",", "}")
       val autocompleteOptions = JsRaw(json)
-    
-      val onLoad = JsRaw("""
+
+      S.appendJs(JsRaw("""
       jQuery(document).ready(function(){
         var data = """+what.encJs+""";
         jQuery("#"""+id+"""").autocomplete(data, """+autocompleteOptions.toJsCmd+""").result(function(event, dt, formatted) {
           jQuery("#"""+hidden+"""").val(formatted);
         });
-      });""")
+      });"""))
 
       <span>
-        <head>
-          <link rel="stylesheet" href={"/" + LiftRules.resourceServerPath +"/autocomplete/jquery.autocomplete.css"} type="text/css" />
-          <script type="text/javascript" src={"/" + LiftRules.resourceServerPath +"/autocomplete/jquery.autocomplete.js"} />
-          {Script(onLoad)}
-        </head>
         {
           attrs.foldLeft(<input type="text" id={id} value={start} />)(_ % _)
         }
         <input type="hidden" name={hidden} id={hidden} value={start} />
+        <lift:tail>
+          <link rel="stylesheet" href={"/" + LiftRules.resourceServerPath +"/autocomplete/jquery.autocomplete.css"} type="text/css" />
+          <script type="text/javascript" src={"/" + LiftRules.resourceServerPath +"/autocomplete/jquery.autocomplete.js"} />
+        </lift:tail>
       </span>
     }
    }
