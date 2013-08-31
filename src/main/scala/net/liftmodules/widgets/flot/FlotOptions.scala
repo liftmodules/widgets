@@ -37,6 +37,7 @@ trait FlotAxisOptions extends BaseFlotOptions {
   def max: Box[Double] = None
   def mode: Box[String] = Empty
   def ticks: List[Double] = Nil //  null or number or ticks array or (fn: range -> ticks array)
+  def labeledTicks: Box[List[(String, Double)]] = Empty
   def zoomRange: Box[Pair[Double, Double]] = Empty
   def panRange:  Box[Pair[Double, Double]] = Empty
 
@@ -46,7 +47,10 @@ trait FlotAxisOptions extends BaseFlotOptions {
         c("tickDecimals", tickDecimals),
         c("mode", mode),
         ticks match {
-        case Nil => Empty
+        case Nil => labeledTicks match {
+          case Full(tks) => Full(("ticks", JsArray(tks.map(tck => JsArray(Num(tck._2), Str(tck._1))) :_*)))
+          case _ => Empty
+        }
         case x :: Nil => Full(("ticks", x))
         case xs => Full(("ticks", JsArray(xs.map(d => Num(d)) :_*)))
         },
