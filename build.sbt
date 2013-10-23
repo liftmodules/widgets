@@ -4,13 +4,13 @@ organization := "net.liftmodules"
 
 version := "1.4-SNAPSHOT"
 
-liftVersion <<= liftVersion ?? "2.5"
+liftVersion <<= liftVersion ?? "2.6-SNAPSHOT"
 
 liftEdition <<= liftVersion apply { _.substring(0,3) }
 
-name <<= (name, liftEdition) { (n, e) =>  n + "_" + e }
+moduleName <<= (name, liftEdition) { (n, e) =>  n + "_" + e }
 
-scalaVersion := "2.10.0"
+scalaVersion := "2.10.3"
 
 crossScalaVersions := Seq("2.10.0", "2.9.2", "2.9.1-1", "2.9.1")
 
