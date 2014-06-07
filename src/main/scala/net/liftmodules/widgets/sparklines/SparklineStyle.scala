@@ -18,9 +18,10 @@ package net.liftmodules {
 package widgets {
 package sparklines {
 
-object SparklineStyle extends Enumeration(0, "Sparkline",
-                                             "BarSparkline") {
-  val LINE, BAR = Value
+object SparklineStyle extends Enumeration(0){
+  type SparklineStyle = Value
+  val LINE = Value("Sparkline")
+  val BAR = Value("BarSparkline")
 
 }
 
