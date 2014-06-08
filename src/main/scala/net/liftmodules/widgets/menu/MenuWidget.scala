@@ -32,8 +32,11 @@ import Helpers._
  * Defines the three superfish menu styles: Horizontal, Vertical, and Navbar. See
  * the superfish docs at http://users.tpg.com.au/j_birch/plugins/superfish/ for examples.
  */
-object MenuStyle extends Enumeration("sf-menu", "sf-menu sf-vertical", "sf-menu sf-navbar") {
-  val HORIZONTAL, VERTICAL, NAVBAR = Value
+object MenuStyle extends Enumeration {
+  type MenuStyle = Value
+  val HORIZONTAL = Value("sf-menu")
+  val VERTICAL = Value("sf-menu sf-vertical")
+  val NAVBAR = Value("sf-menu sf-navbar")
 }
 
 object MenuWidget {
