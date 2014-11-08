@@ -129,9 +129,8 @@ class CalendarDayViewDemo {
     val c = Calendar getInstance;
     c.set(DAY_OF_MONTH, 17)
     c.set(MONTH, 4)
-    bind("cal", html,
-         "widget" -> CalendarDayView(c, DayViewMeta(Locale.getDefault()), list, itemClick)
-    )
+    val ns = ".cal-widget" #> CalendarDayView(c, DayViewMeta(Locale.getDefault()), list, itemClick)
+    ns(html)
 
   }
 

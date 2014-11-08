@@ -129,9 +129,8 @@ class CalendarWeekViewDemo {
     val c = Calendar getInstance;
     c.set(DAY_OF_MONTH, 17)
     c.set(MONTH, 4)
-    bind("cal", html,
-         "widget" -> CalendarWeekView(c, WeekViewMeta(MONDAY, Locale.getDefault()), list, itemClick)
-    )
+    val ns = ".cal-widget" #> CalendarWeekView(c, WeekViewMeta(MONDAY, Locale.getDefault()), list, itemClick)
+    ns(html)
 
   }
 

@@ -217,11 +217,11 @@ trait LogLevelChanger {
           </tr>
         </thead>
         <tbody>
-          <logLevels:rows>
+          <div id="logLevels-rows">
             <tr>
-              <td><row:name/></td><td><row:level/></td>
+              <td><span id="row-name"/></td><td><span id="row-level"/></td>
             </tr>
-          </logLevels:rows>
+          </div>
         </tbody>
       </table>
     </div>
@@ -250,13 +250,13 @@ trait LogLevelChanger {
           )
           t.reduceLeft(_ ++ Text("|") ++ _)
         }
-        
-      bind("row", in, 
-           "name" -> getLevel(l).dmap(Text(getName(l)):NodeSeq)(lv => <b>{getName(l)}</b>),
-           "level" -> loggerChoices(l))
+         (
+          "#row-name" #> getLevel(l).dmap(Text(getName(l)):NodeSeq)(lv => <b>{getName(l)}</b>) &
+           "#row-level" #> loggerChoices(l)
+          )(in)
       }
     }
-    
-    bind("logLevels", xhtml, "rows" -> doRows _)
+    val ns = "#logLevels-rows" #> doRows _
+     ns(xhtml)
   }
 }
