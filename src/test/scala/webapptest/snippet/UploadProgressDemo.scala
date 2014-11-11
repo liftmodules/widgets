@@ -40,17 +40,18 @@ object UploadProgressDemo extends DispatchSnippet {
     case "script" => UploadProgress.head _
   }
 
-  def upload(xhtml: NodeSeq): NodeSeq = {
+  def upload(html: NodeSeq): NodeSeq = {
     if (S.get_?){
-      val ns = "#ul-file_upload" #>   SHtml.fileUpload(ul => theUpload(Full(ul)))
-      ns(chooseTemplate("choose", "get", xhtml))
+      val ns = "#get ^^" #> "ignore" & "#ul-file_upload" #>   SHtml.fileUpload(ul => theUpload(Full(ul)))
+      ns(html)
 
     } else {
-      val ns = "#ul-file_name" #> theUpload.is.map(v => Text(v.fileName)) &
+      val ns = "#get ^^" #> "ignore" &
+        "#ul-file_name" #> theUpload.is.map(v => Text(v.fileName)) &
         "#ul-mime_type" #> theUpload.is.map(v => Box.legacyNullTest(v.mimeType).map(s => Text(s)).openOr(Text("No mime type supplied"))) &
         "#ul-length" #> theUpload.is.map(v => Text(v.file.length.toString)) &
         "#ul-md5" #> theUpload.is.map(v => Text(hexEncode(md5(v.file))))
-        ns(chooseTemplate("choose", "post", xhtml))
+        ns(html)
 
     }
   }
