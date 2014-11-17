@@ -46,13 +46,11 @@ class AutoCompleteDemo {
     }
     
     val myOptions :List[(String,String)] = ("'width'","300") :: Nil
-    bind("autocomplete",xhtml,
-         "1" -> AutoComplete("", autoCompleteData(_,_), in => value1(in)), 
-         "2" -> AutoComplete("", autoCompleteData(_,_), autocompleteSubmit(_), myOptions),
-         "val1" -> Text(value1.is),
-         "val2" -> Text(value2.is))
-    
-    
+    ("#autocomplete-1" #> AutoComplete("", autoCompleteData(_,_), in => value1(in)) &
+      "#autocomplete-2" #> AutoComplete("", autoCompleteData(_,_), autocompleteSubmit(_), myOptions) &
+      "#autocomplete-val1" #> Text(value1.is) &
+      "#autocomplete-val2" #>  Text(value2.is)) (xhtml)
+
   }
 
 }

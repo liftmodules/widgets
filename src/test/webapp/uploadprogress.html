@@ -1,4 +1,4 @@
-<lift:surround with="default" at="content">
+<lift:surround with="default" at="content" xmlns:ul="http://www.w3.org/2001/XMLSchema">
   <head>
     <script type="text/javascript" src="/classpath/uploadprogress/uploadprogress.js"></script>
     <lift:UploadExample.script />
@@ -24,16 +24,16 @@
   <p>Choose a file to upload</p>
   
   <lift:UploadExample.upload form="post" multipart="true" id="upload">
-    <choose:post>
+    <div id="post">
       <p>
-        File name: <ul:file_name/><br />
-        MIME Type: <ul:mime_type/><br />
-        File length: <ul:length/><br />
-        MD5 Hash: <ul:md5/><br />
+        File name: <span id="ul-file_name"></span><br />
+        MIME Type: <span id="ul-mime_type"></span><br />
+        File length: <span id="ul-length"></span><br />
+        MD5 Hash: <span id="ul-md5"></span><br />
       </p>
-    </choose:post>
-    
-    <choose:get>
+    </div>
+
+    <div id="get">
       <ul:file_upload/>
       <input type="submit" value="Upload"/>
       
@@ -43,12 +43,5 @@
           <div id="percents"></div>
         </div>
       </div>
-      
-      
-    </choose:get>
-    
-  </lift:UploadExample.upload> 
-  
-  
-   
+  </lift:UploadExample.upload>
 </lift:surround>

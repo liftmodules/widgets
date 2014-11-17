@@ -38,8 +38,8 @@ class TableSorterDemo {
   }
   
   def demo3(xhtml: NodeSeq) :NodeSeq = {
-    bind("demo3", xhtml, 
-      "btn" -> a( () => TableSorter.jsRender("#myTable3", options).cmd, Text("TableSorter that table!") ))
+    val ns = "#demo3-btn" #> a( () => TableSorter.jsRender("#myTable3", options).cmd, Text("TableSorter that table!") )
+    ns(xhtml)
   }
   
 }

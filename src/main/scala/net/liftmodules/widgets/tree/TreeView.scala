@@ -22,8 +22,7 @@ import _root_.scala.xml._
 import _root_.net.liftweb.util.Helpers._
 import _root_.net.liftweb.common.{Box, Full, Empty}
 import _root_.net.liftweb.http.S._
-import _root_.net.liftweb.http.LiftRules
-import _root_.net.liftweb.http.{LiftResponse, JsonResponse}
+import net.liftweb.http.{S, LiftRules, LiftResponse, JsonResponse}
 import _root_.net.liftweb.http.js._
 import _root_.net.liftweb.http.js.jquery._
 import JsCmds._
@@ -118,7 +117,7 @@ class TreeView {
      fmapFunc(NFuncHolder(treeFunc)){key =>
 
        val url = encodeURL(contextPath +
-	  		 "/"+LiftRules.ajaxPath)+"?"+key+"=_"
+	  		 "/"+LiftRules.liftPath + "/ajax/"+ S.renderVersion)+"?"+key+"=_"
 
        val obj: JsObj = JsObj(("url" -> Str(url)) :: jsObj.props:_*)
 
