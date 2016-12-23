@@ -16,17 +16,23 @@ Provides:
 * uploadprogress
 
 
-To include this module in your Lift project, update your `libraryDependencies` in `build.sbt` to include:
+To include this module in your Lift project, add the following to `build.sbt`:
 
-*Lift 2.6.x* for Scala 2.9 and 2.10:
+    libraryDependencies += "net.liftmodules" %% "widgets_3.0" % "1.4.0"
 
-    "net.liftmodules" %% "widgets_2.6" % "1.3"
+Releases
+========
 
-*Lift 2.5.x* for Scala 2.9 and 2.10:
+| Lift Version | Scala Version | Module Version |
+|--------------|---------------|----------------|
+| 3.0.x        | 2.12, 2.11    | 1.4.0          |
+| 2.6.x        | 2.10, 2.9     | 1.3            |
+| 2.5.x        | 2.10, 2.9     | 1.3            |
 
-    "net.liftmodules" %% "widgets_2.5" % "1.3"
+Historic Snapshots
+------------------
 
-*Lift 3.0.x* for Scala 2.10:
+Lift 3.0.x for Scala 2.10:
 
     "net.liftmodules" %% "widgets_3.0" % "1.3-SNAPSHOT"
 
@@ -45,13 +51,10 @@ General documentation and starting points:
 **Note:** The module package changed from `net.liftweb.widgets` to `net.liftmodules.widgets` in May 2012.  Please consider this when referencing documentation written before that date.
 
 
-
-
 Autocomplete
 ------------
 
-* _Lift Cookbook_ on [Making Suggestions with Autocomplete
-](http://cookbook.liftweb.net/#Autocomplete).
+* _Lift Cookbook_ on [Making Suggestions with Autocomplete](http://cookbook.liftweb.net/#Autocomplete).
 
 * [Using Lift’s AutoComplete Widget](http://timperrett.com/2010/10/13/using-lifts-autocomplete-widget/), Timothy Perrett's blog, 13 October 2010.
 
@@ -64,7 +67,7 @@ Calendar
 Flot
 ----
 
-* [Lift Wiki page](https://www.assembla.com/wiki/show/liftweb/flot). 
+* [Lift Wiki page](https://www.assembla.com/wiki/show/liftweb/flot).
 
 Gravatar
 --------
@@ -86,7 +89,7 @@ RSS Widget
 ----------
 
 * Exploring Lift, [chapter 14](http://exploring.liftweb.net/onepage/index.html#toc-Subsection-14.1.3).
- 
+
 
 Sparklines
 ----------
@@ -109,7 +112,7 @@ TreeView
 Notes for module developers
 ===========================
 
-* The [Jenkins build](https://liftmodules.ci.cloudbees.com/job/widgets/) is triggered on a push to master.
+Merge to master will trigger a Travis build and publish a SNAPSHOT (if the version is a -SNAPSHOT).
 
 
 
