@@ -1,6 +1,8 @@
 Widgets Lift Module
 ==================
 
+[![Build Status](https://travis-ci.org/liftmodules/widgets.svg?branch=master)](https://travis-ci.org/liftmodules/widgets)
+
 Provides:
 
 * autocomplete
