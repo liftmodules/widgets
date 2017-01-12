@@ -20,14 +20,17 @@ Provides:
 
 To include this module in your Lift project, add the following to `build.sbt`:
 
-    libraryDependencies += "net.liftmodules" %% "widgets_3.0" % "1.4.0"
+    libraryDependencies += "net.liftmodules" %% "widgets_3.0" % "<VERSION>"
+
+..but replacing `<VERSION>` with one of the "Module Version" numbers listed in the table below (e.g., to end up with "1.4.1").
 
 Releases
 ========
 
 | Lift Version | Scala Version | Module Version |
 |--------------|---------------|----------------|
-| 3.0.x        | 2.12, 2.11    | 1.4.0          |
+| 3.0.x        | 2.12    | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.0_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.0_2.12) |
+| 3.0.x        | 2.11    | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.0_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.0_2.11) |
 | 2.6.x        | 2.10, 2.9     | 1.3            |
 | 2.5.x        | 2.10, 2.9     | 1.3            |
 
