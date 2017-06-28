@@ -1,4 +1,5 @@
-import LiftModule.{liftVersion, liftEdition}
+val liftVersion = settingKey[String]("Lift Web Framework full version number")
+val liftEdition = settingKey[String]("Lift Edition (such as 2.6 or 3.0)")
 
 name := "widgets"
 
@@ -12,9 +13,8 @@ liftEdition := (liftVersion apply { _.substring(0,3) }).value
 
 moduleName := name.value + "_" + liftEdition.value
 
-scalaVersion := "2.12.1"
-
-crossScalaVersions := Seq("2.12.1", "2.11.8")
+crossScalaVersions := Seq("2.12.2", "2.11.11")
+scalaVersion := crossScalaVersions.value.head
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 
@@ -25,10 +25,8 @@ resolvers += "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"
 libraryDependencies += "net.liftweb" %% "lift-webkit" % liftVersion.value % "provided"
 
 libraryDependencies ++=
-  "ch.qos.logback" % "logback-classic" % "1.1.8" % "provided" ::
+  "ch.qos.logback" % "logback-classic" % "1.2.3" % "provided" ::
   "log4j" % "log4j" % "1.2.17" % "provided" ::
-  "org.specs2" %% "specs2-core" % "3.8.6" % "test" ::
-  "org.scalacheck" %% "scalacheck" % "1.13.4" % "test" ::
   Nil
 
 publishTo := (version.value.endsWith("SNAPSHOT") match {
