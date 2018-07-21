@@ -29,6 +29,8 @@ Releases
 
 | Lift Version | Scala Version | Module Version |
 |--------------|---------------|----------------|
+| 3.2.x        | 2.12    | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.2_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.2_2.12) |
+| 3.2.x        | 2.11    | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.2_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.2_2.11) |
 | 3.1.x        | 2.12    | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.1_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.1_2.12) |
 | 3.1.x        | 2.11    | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.1_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.1_2.11) |
 | 3.0.x        | 2.12    | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.0_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.liftmodules/widgets_3.0_2.12) |
