@@ -5,7 +5,7 @@ name := "widgets"
 
 organization := "net.liftmodules"
 
-version := "1.6.0"
+version := "1.7.0-SNAPSHOT"
 
 liftVersion := "3.2.0"
 
